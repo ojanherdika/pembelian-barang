@@ -18,10 +18,11 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::Attempt($credentials)) {
+
+        if (Auth::attempt($credentials)) {
             return redirect()->intended('/dashboard');
         }
-        return redirect()->route('/')->withInput($request->only('email'))->withErrors(['error' => 'Invalid email or password']);
+        return redirect()->route('/login')->withInput($request->only('email'))->withErrors(['error' => 'Invalid email or password']);
     }
 
 
@@ -29,6 +30,6 @@ class AuthController extends Controller
     {
         Auth::logout();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

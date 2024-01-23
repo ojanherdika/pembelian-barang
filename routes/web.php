@@ -16,7 +16,7 @@ use App\Http\Controllers\DashboardController;
 */
 
 
-Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/sign-in', [AuthController::class, 'login'])->name('sign-in');
 Route::get('/logout', [AuthController::class, 'logout']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
